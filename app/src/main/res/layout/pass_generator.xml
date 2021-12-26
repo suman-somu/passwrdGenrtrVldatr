@@ -45,19 +45,54 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
         app:layout_constraintVertical_bias="0.052" />
 
-    <EditText
-        android:id="@+id/passwordResult"
-        android:layout_width="320dp"
-        android:layout_height="56dp"
-        android:ems="10"
-        android:fontFamily="sans-serif-black"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textSize="34sp"
+    <Button
+        android:id="@+id/regenerateButton"
+        android:layout_width="237dp"
+        android:layout_height="66dp"
+        android:text="Regenerate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+        app:layout_constraintVertical_bias="0.642" />
+
+    <TextView
+        android:id="@+id/resultPassword"
+        android:layout_width="333dp"
+        android:layout_height="46dp"
+        android:fontFamily="sans-serif-black"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:text="YOUR PASSWORD IS "
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="208dp"
+        android:layout_marginTop="68dp"
+        android:rotationX="180"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/download" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

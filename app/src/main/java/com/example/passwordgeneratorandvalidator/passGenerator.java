@@ -3,14 +3,14 @@ package com.example.passwordgeneratorandvalidator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import org.w3c.dom.Text;
-
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class passGenerator extends Activity {
@@ -19,12 +19,19 @@ public class passGenerator extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pass_generator);
 
+        ImageView i = findViewById(R.id.imageView);
+        i.setVisibility(View.INVISIBLE);
 
         //hiding the result text view
-        TextView t = findViewById(R.id.passwordResult);
+        TextView t = findViewById(R.id.resultPassword);
         t.setVisibility(View.INVISIBLE);
 
+        //hiding the regenerate button
+        Button b = findViewById(R.id.regenerateButton);
+        b.setVisibility(View.INVISIBLE);
 
+        TextView  tx = findViewById(R.id.textView4);
+        tx.setVisibility(View.INVISIBLE);
 
 
         //set a on click listener in the button . so that when it pressed the program will get the instruction to start
@@ -33,6 +40,10 @@ public class passGenerator extends Activity {
             @Override
             public void onClick(View v) {
 
+
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
                 //hiding the not required views
                 Button b= findViewById(R.id.buttonToStart);
@@ -51,7 +62,11 @@ public class passGenerator extends Activity {
                 int len= Integer.parseInt(lengthOfPassword.getText().toString());
 
                 //takes the required length of the password and  generates and prints the password
-                startFunction(len);
+                if(len >=4){
+                    startFunction(len);
+                }else{
+                    Toast.makeText( getApplication(), "4 minimum h chutiye \n aur aaj kal toh 6 se niche joi nae krta h \n tumahra jyada khujli ho rha h", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -98,9 +113,24 @@ public class passGenerator extends Activity {
 
 
         if(isValid(password)){
-            TextView result = findViewById(R.id.passwordResult);
+
+            TextView text = findViewById(R.id.textView4);
+            text.setVisibility(View.VISIBLE);
+
+            TextView result = findViewById(R.id.resultPassword);
             result.setVisibility(View.VISIBLE);
             result.setText(password);
+
+            Button regenerateButton = findViewById(R.id.regenerateButton);
+            regenerateButton.setVisibility(View.VISIBLE);
+            regenerateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startFunction(len);
+                }
+            });
+
+
         }else {
             startFunction(len);
         }
