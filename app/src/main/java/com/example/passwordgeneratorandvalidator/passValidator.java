@@ -2,8 +2,10 @@ package com.example.passwordgeneratorandvalidator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -21,6 +23,20 @@ public class passValidator extends Activity {
             public void onClick(View v) {
 
                 //hide all the unrequired Views
+                TextView t= findViewById(R.id.textView);
+                t.setVisibility(View.INVISIBLE);
+
+                EditText e= findViewById(R.id.editTextTextPersonName2);
+                e.setVisibility(View.INVISIBLE);
+
+                Button b= findViewById(R.id.button);
+                b.setVisibility(View.INVISIBLE);
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                //over
+
+
                 startFunction();
             }
         });
@@ -34,15 +50,19 @@ public class passValidator extends Activity {
 
         boolean b = isValid(toCheck);
 
+        TextView result = findViewById(R.id.textViewResult);
         if(b){
 
-            // hide the elements
-            Toast.makeText(getApplication(), "correct", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplication(), "correct", Toast.LENGTH_SHORT).show();
+
+            result.setText("CORRECT");
 
 
         }
         else {
-            Toast.makeText(getApplication(), "wrong", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplication(), "wrong", Toast.LENGTH_SHORT).show();
+
+            result.setText("WRONG");
         }
 
     }
